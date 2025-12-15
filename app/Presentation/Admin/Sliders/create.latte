@@ -1,0 +1,29 @@
+{block content}
+    <div class="container">
+        <h1 n:block="title" class="my-3">Nový slider</h1>
+
+        {form sliderForm}
+            <div class="form-group">
+                    <label for="title">Title:</label>
+                    <input n:name="title" type="text" class="form-control mt-2" aria-describedby="emailHelp" placeholder="Zadejte titulek">
+                </div>
+                        
+                <div class="form-group mt-3">
+                    <label for="description">Password:</label>
+                    <input n:name="description" type="textarea" class="form-control mt-2" placeholder="Zadejte popis">
+                </div>
+
+                <div class="form-group mt-3">
+                    <label for="image">Image:</label>
+                    <input n:name="image" type="file" class="form-control mt-2">
+                </div>
+
+                <button n:name="send" type="submit" class="btn btn-danger mt-3">Submit</button>
+        {/form}
+
+<p>
+    <a n:href="default">← zpět na seznam</a>
+</p>
+</div>
+{/block}
+

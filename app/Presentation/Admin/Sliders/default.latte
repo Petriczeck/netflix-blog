@@ -1,15 +1,15 @@
 {block content}
 <div class="container">
-<h1 class="my-3" n:block="title">Slidery</h1>
-
-<table class="table table-striped">
+<h1 class="my-3" n:block="title">Sliders</h1>
+<a n:href="create" class="btn btn-danger">+ New Slider</a>
+<table class="table table-striped mt-4">
     <thead>
         <tr>
             <th>ID</th>
-            <th>Název</th>
-            <th>Popis</th>
-            <th>Obrázek</th>
-            <th>Akce</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Image</th>
+            <th>Actions</th>
         </tr>
     </thead>
 
@@ -18,12 +18,12 @@
             <tr>
                 <td>{$slider->id}</td>
                 <td>{$slider->title}</td>
-                <td>{$slider->description}</td>
+                <td>{$slider->description|truncate:50}</td>
                 <td>
                     <img src="{$basePath}/uploads/slider/{$slider->image}" width="120">
                 </td>
                 <td>
-                    Edit | Smazat
+                    <a n:href="edit, id => $slider->id">✏️</a> | <a n:href="delete, id => $slider->id">🗑️</a>
                 </td>
             </tr>
         {/foreach}
