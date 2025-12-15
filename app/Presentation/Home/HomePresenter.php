@@ -4,9 +4,73 @@ declare(strict_types=1);
 
 namespace App\Presentation\Home;
 
-use Nette;
+use Nette\Application\UI\Presenter;
+use App\Core\Slider\SliderModel;
+use Nette\Application\UI\Form;
 
 
-final class HomePresenter extends Nette\Application\UI\Presenter
+final class HomePresenter extends Presenter
 {
+    public function __construct(
+        private SliderModel $sliderModel
+    ) {}
+
+    public function renderDefault(): void
+    {
+        $this->template->slider = $this->sliderModel->getAll();
+    }
+
+    protected function createComponentSliderForm(): Form
+    {
+       $form = new Form;
+        $form->addProtection();
+
+        $form->addText('title', 'Název:')
+    ->setRequired();
+
+        $form->addText('description', 'Popis:')
+            ->setRequired();
+
+        $form->addUpload('image', 'Obrázek:')
+    ->setRequired()
+    ->addRule(Form::MIME_TYPE, 'Pouze JPG, PNG nebo GIF', [
+        'image/jpeg',
+        'image/png',
+        'image/gif',
+        'image/webp',
+    ]);
+
+        $form->addSubmit('send', 'Přidat slider');
+
+        $form->onSuccess[] = function (Form $form, array $values) {
+
+    $image = $values['image'];
+
+    if ($image->isOk()) {
+
+        // původní název souboru
+        $imageName = $image->getName();
+
+        // cílová cesta
+        $targetPath = __DIR__ . '/../../../www/uploads/slider/' . $imageName;
+
+        // (VOLITELNÉ) pokud existuje, přepiš
+        if (file_exists($targetPath)) {
+            unlink($targetPath);
+        }
+
+        $image->move($targetPath);
+
+        $this->sliderModel->add(
+            $values['title'],
+            $values['description'],
+            $imageName
+        );
+    }
+
+    $this->redirect('this');
+};
+
+        return $form;
+    }
 }

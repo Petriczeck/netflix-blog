@@ -1,5 +1,8 @@
 services:
 	- App\Core\RouterFactory::createRouter
+	- App\Core\User\UserAuthenticator
+	- App\Core\User\UserRepository
+	- App\Core\Slider\SliderModel
 
 
 search:

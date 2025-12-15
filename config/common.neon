@@ -1,5 +1,3 @@
-# see https://doc.nette.org/en/configuring
-
 parameters:
 
 
@@ -11,8 +9,8 @@ application:
 
 
 database:
-	dsn: 'sqlite::memory:'
-	user:
+	dsn: 'mysql:host=127.0.0.1;dbname=netflix-blog'
+	user: root
 	password:
 
 
@@ -34,3 +32,6 @@ di:
 	export:
 		parameters: no
 		tags: no
+
+session:
+    autoStart: true

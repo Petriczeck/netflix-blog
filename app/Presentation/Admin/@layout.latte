@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="dashboard.css">
+    <title>Admin</title>
+</head>
+<body>
+
+    
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container">
+    <a class="navbar-brand" href="#">CMS Admin</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" n:href="Dashboard:default">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" n:href="Sliders:default">Sliders</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Movies</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Users</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="user-panel">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Jste přihlášen jako: Admin
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Edit</a></li>
+            <li><a class="dropdown-item" n:href=":Home:default">Go to Homepage</a></li>
+            <li><a class="dropdown-item" href="/">Log-out</a></li>
+          </ul>
+        </li>
+    </div>
+
+  </div>
+</nav>
+        
+	<div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
+
+	{include content}
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>

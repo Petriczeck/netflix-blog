@@ -1,0 +1,33 @@
+{block content}
+<div class="container">
+<h1 class="my-3" n:block="title">Slidery</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Název</th>
+            <th>Popis</th>
+            <th>Obrázek</th>
+            <th>Akce</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {foreach $sliders as $slider}
+            <tr>
+                <td>{$slider->id}</td>
+                <td>{$slider->title}</td>
+                <td>{$slider->description}</td>
+                <td>
+                    <img src="{$basePath}/uploads/slider/{$slider->image}" width="120">
+                </td>
+                <td>
+                    Edit | Smazat
+                </td>
+            </tr>
+        {/foreach}
+    </tbody>
+</table>
+</div>
+{/block}
