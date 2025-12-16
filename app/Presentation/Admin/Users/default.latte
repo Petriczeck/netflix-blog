@@ -1,0 +1,39 @@
+{block content}
+<div class="container">
+<h1 class="my-3" n:block="title">Users</h1>
+<a n:href="create" class="btn btn-danger">+ New User</a>
+<table class="table table-striped mt-4">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Vytvořen</th>
+            <th>Akce</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {foreach $users as $u}
+            <tr>
+                <td>{$u->id}</td>
+                <td>{$u->email}</td>
+                <td>
+                    <strong>{$u->role ?: 'user'}</strong>
+                </td>
+                <td>
+                    {$u->created_at|date:'d.m.Y H:i'}
+                </td>
+                <td>
+                    <a n:href="edit, id => $u->id">✏️</a> | <a n:href="delete, id => $u->id">🗑️</a>
+                </td>
+            </tr>
+        {/foreach}
+    </tbody>
+</table>
+</div>
+{/block}
+
+
+
+

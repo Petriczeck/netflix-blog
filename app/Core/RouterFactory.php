@@ -22,6 +22,7 @@ final class RouterFactory
 			'action' => 'default',
 		]);
 		
+		$router->addRoute('logout', 'Sign:out');
 		$router->addRoute('<presenter>/<action>[/<id>]', 'Home:default');
 		return $router;
 	}

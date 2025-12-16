@@ -1,0 +1,31 @@
+{block content}
+
+<div class="container">
+        <h1 n:block="title" class="my-3">Nový uživatel</h1>
+
+        {form userForm}
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input n:name="email" type="text" class="form-control mt-2" aria-describedby="emailHelp" placeholder="Zadejte e-mail">
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input n:name="password" type="password" class="form-control mt-2" aria-describedby="emailHelp" placeholder="Zadejte heslo">
+            </div>
+
+            <div class="form-group">
+                <label for="role">Role:</label>
+                <select n:name="role" class="form-select" aria-label="Default select example">
+                    <option selected>Choose role</option>
+                    <option value="admin">Admin</option>
+                    <option value="user">User</option>
+                </select>
+            </div>
+
+            <button n:name="send" type="submit" class="btn btn-danger mt-3">Submit</button>
+        {/form}
+</div>
+{/block}
+
