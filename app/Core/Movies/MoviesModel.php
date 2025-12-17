@@ -15,39 +15,16 @@ class MoviesModel
         return $this->database->table('movies');
     }
 
-    /*
-
-    public function add(string $title, string $description, string $image): void
+  public function create(string $name, string $description, string $image, string $categories)
 {
-    $this->database->table('slider')->insert([
-        'title' => $title,
+    return $this->database->table('movies')->insert([
+        'name' => $name,
         'description' => $description,
         'image' => $image,
+        'categories' => $categories,
     ]);
 }
 
-public function getById(int $id)
-{
-    return $this->database->table('slider')->get($id);
-}
-
-public function delete(int $id): void
-{
-    $this->database->table('slider')
-        ->where('id', $id)
-        ->delete();
-}
-
-public function update(int $id, string $title, string $description, string $image): void
-{
-    $this->database->table('slider')
-        ->where('id', $id)
-        ->update([
-            'title' => $title,
-            'description' => $description,
-            'image' => $image,
-        ]);
-}
-*/
+   
 
 }

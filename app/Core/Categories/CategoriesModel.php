@@ -14,4 +14,5 @@ class CategoriesModel
     {
         return $this->database->table('categories');
     }
+
 }

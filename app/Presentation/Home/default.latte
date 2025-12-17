@@ -12,9 +12,6 @@
         <div class="carousel-caption d-none d-md-block">
             <h1>{$slide->title}</h1>
             <p class="my-4">{$slide->description}</p>
-            <div class="carousel-item-links">
-                <a href="detail.html">Show movie description</a>
-            </div>
         </div>
     </div>
 {/foreach}
@@ -42,9 +39,9 @@
                 <h2>Action</h2>
                 <div class="movie-category-list">
                 
-                {foreach $movies as $movie}
+               {foreach $actionMovies as $movie}
                 <div class="movie-category-list-item">
-                    <img src="https://image.pmgstatic.com/cache/resized/w420/files/images/film/posters/170/699/170699448_e5tusp.jpg" alt="{$movie->name}">
+                    <img src="{$basePath}/movies/{$movie->image}" alt="{$movie->name}">
                     <h3>{$movie->name}</h3>
                     <p>{$movie->description|truncate:60}</p>
                     <div class="movie-catery-list-links">
@@ -53,30 +50,28 @@
                     </div>
                 </div>
                 {/foreach}
-                
+                </div>
 
-
+                <h2 class="mt-4">Comedy</h2>
+                <div class="movie-category-list">
                 
-            
-            </div>
-
-            <h2 class="mt-4">Comedy</h2>
-            <div class="movie-category-list">
-                
+               {foreach $comedyMovies as $movie}
                 <div class="movie-category-list-item">
-                    <img src="https://image.pmgstatic.com/cache/resized/w420/files/images/film/posters/170/699/170699448_e5tusp.jpg" alt="Movie">
-                    <h3>Name</h3>
-                    <p>Lorem ipsum dolor sit amet.</p>
+                    <img src="{$basePath}/movies/{$movie->image}" alt="{$movie->name}">
+                    <h3>{$movie->name}</h3>
+                    <p>{$movie->description|truncate:60}</p>
                     <div class="movie-catery-list-links">
                         <a href="detail.html">Zobrazit</a>
                         <a href="/">Wishlist</a>
                     </div>
                 </div>
+                {/foreach}
+                </div>
+                
+
 
                 
             
-            </div>
-
 
         </div>
     </section>

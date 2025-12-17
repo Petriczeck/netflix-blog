@@ -8,19 +8,30 @@ use Nette\Application\UI\Presenter;
 use App\Core\Slider\SliderModel;
 use App\Core\Movies\MoviesModel;
 use Nette\Application\UI\Form;
+use Nette\Database\Explorer;
 
 
 final class HomePresenter extends Presenter
 {
     public function __construct(
         private SliderModel $sliderModel,
-        private MoviesModel $MoviesModel
+        private MoviesModel $MoviesModel,
+        private Explorer $database
     ) {}
 
     public function renderDefault(): void
     {
         $this->template->slider = $this->sliderModel->getAll();
         $this->template->movies = $this->MoviesModel->getAll();
+
+        $this->template->comedyMovies = $this->database
+        ->table('movies')
+        ->where('categories LIKE ?', '%Comedy%');
+
+    $this->template->actionMovies = $this->database
+        ->table('movies')
+        ->where('categories LIKE ?', '%Action%');
+
     }
 
     protected function createComponentSliderForm(): Form

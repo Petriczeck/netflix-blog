@@ -1,13 +1,14 @@
 {block content}
 <div class="container">
 <h1 class="my-3" n:block="title">Movies</h1>
-<a href="create" class="btn btn-danger">+ New Movie</a>
+<a n:href="create" class="btn btn-danger">+ New Movie</a>
 <table class="table table-striped mt-4">
     <thead>
         <tr>
             <th>ID</th>
             <th>Name</th>
             <th>Description</th>
+            <th>Categories</th>
             <th>Image</th>
             <th>Actions</th>
         </tr>
@@ -19,8 +20,10 @@
                 <td>{$movie->id}</td>
                 <td>{$movie->name}</td>
                 <td>{$movie->description|truncate:50}</td>
+                <td>{$movie->categories}</td>
+                
                 <td>
-                    <img src="" width="120">
+                    <img src="{$basePath}/movies/{$movie->image}" width="50">
                 </td>
                 <td>
                     <a href="">✏️</a> | <a href="">🗑️</a>
