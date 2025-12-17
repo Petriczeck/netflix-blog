@@ -1,0 +1,27 @@
+{block content}
+<div class="container">
+<h1 class="my-3" n:block="title">Categories</h1>
+<a href="create" class="btn btn-danger">+ New Category</a>
+<table class="table table-striped mt-4">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {foreach $categories as $category}
+            <tr>
+                <td>{$category->id}</td>
+                <td>{$category->name}</td>
+                <td>
+                    <a href="">✏️</a> | <a href="">🗑️</a>
+                </td>
+            </tr>
+        {/foreach}
+    </tbody>
+</table>
+</div>
+{/block}

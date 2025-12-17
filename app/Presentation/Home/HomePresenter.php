@@ -6,18 +6,21 @@ namespace App\Presentation\Home;
 
 use Nette\Application\UI\Presenter;
 use App\Core\Slider\SliderModel;
+use App\Core\Movies\MoviesModel;
 use Nette\Application\UI\Form;
 
 
 final class HomePresenter extends Presenter
 {
     public function __construct(
-        private SliderModel $sliderModel
+        private SliderModel $sliderModel,
+        private MoviesModel $MoviesModel
     ) {}
 
     public function renderDefault(): void
     {
         $this->template->slider = $this->sliderModel->getAll();
+        $this->template->movies = $this->MoviesModel->getAll();
     }
 
     protected function createComponentSliderForm(): Form
